@@ -7,7 +7,20 @@ orbs:
 # Orchestrate or schedule a set of jobs
 workflows:
   # Name the workflow "welcome"
-  terraform:
+  deploy_infrastructure:
     # Run the welcome/run job in its own container
     jobs:
-      - terraform/run
+      - terraform/fmt:
+          checkout: true
+          context: terraform
+       - terraform/validate:
+          checkout: true
+          context: terraform
+          requires:
+            - terraform/fmt
+      - terraform/plan:
+          checkout: true
+          context: terraform
+          persist-workspace: true
+          requires:
+            - terraform/validate
