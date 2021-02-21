@@ -1,8 +1,8 @@
 module "eks" {
-  source       = "terraform-aws-modules/eks/aws"
-  cluster_name = local.cluster_name
+  source          = "terraform-aws-modules/eks/aws"
+  cluster_name    = local.cluster_name
   cluster_version = "1.18"
-  subnets      = module.vpc.private_subnets
+  subnets         = module.vpc.private_subnets
 
   tags = {
     Environment = "training"

@@ -4,7 +4,7 @@ variable "region" {
 }
 
 provider "aws" {
-  region  = "us-east-1"
+  region = "us-east-1"
 }
 
 data "aws_availability_zones" "available" {}
@@ -19,7 +19,7 @@ resource "random_string" "suffix" {
 }
 
 module "vpc" {
-  source  = "terraform-aws-modules/vpc/aws"
+  source = "terraform-aws-modules/vpc/aws"
 
   name                 = "training-vpc"
   cidr                 = "10.69.0.0/16"

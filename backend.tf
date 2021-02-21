@@ -8,24 +8,24 @@ terraform {
 }
 
 resource "aws_s3_bucket" "training-terraform" {
-    bucket  = "training-terraform"
-    acl     = "private"
-    
-    tags = {
-      "Name" = "training-terraform"
-    }
-    
-    versioning {
-      enabled = true
-    }
+  bucket = "training-terraform"
+  acl    = "private"
 
-    server_side_encryption_configuration {
-      rule {
-          apply_server_side_encryption_by_default {
-              sse_algorithm = "AES256"
-          }
+  tags = {
+    "Name" = "training-terraform"
+  }
+
+  versioning {
+    enabled = true
+  }
+
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        sse_algorithm = "AES256"
       }
     }
+  }
 }
 
 # output "s3_bucket_id" {
